@@ -29,28 +29,36 @@ The **Bus Ticket Booking System (BTBS)** provides a centralized platform connect
 ### 1. Use Case Diagram
 Describes the interactions between key system actors (**Passenger** and **Admin**) and system functionalities.
 
-![Use Case Diagram](BTBS(use%20case)new.png)
+<p align="center">
+  <img src="BTBS(use%20case)new.png" alt="Use Case Diagram" width="750" />
+</p>
 
 ---
 
 ### 2. Activity Diagram
 Visualizes the customer booking lifecycle: route search &rarr; seat selection &rarr; wallet verification &rarr; PIN authentication &rarr; booking confirmation.
 
-![Activity Diagram](BTBS(activity%20diagram).png)
+<p align="center">
+  <img src="BTBS(activity%20diagram).png" alt="Activity Diagram" width="550" />
+</p>
 
 ---
 
 ### 3. Sequence Diagram
 Details step-by-step method calls and data flow between the Passenger, UI, Backend Services, and Database.
 
-![Sequence Diagram](BTBS(sequence%20diagram).png)
+<p align="center">
+  <img src="BTBS(sequence%20diagram).png" alt="Sequence Diagram" width="550" />
+</p>
 
 ---
 
 ### 4. Entity-Relationship Diagram (ERD)
 The relational schema generated with ERMaster, showing all 11 tables and their relational integrity constraints.
 
-![Entity Relationship Diagram](BTBS(ERD).png)
+<p align="center">
+  <img src="BTBS(ERD).png" alt="Entity Relationship Diagram" width="800" />
+</p>
 
 ---
 
