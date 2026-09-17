@@ -34,6 +34,11 @@ public class Main {
         displaySchedules();
         displaySeatAvailability(1); // Check Schedule #1
         displaySampleBooking(1);     // Check Booking #1
+
+        if (!java.awt.GraphicsEnvironment.isHeadless()) {
+            System.out.println(">>> Launching Desktop GUI Window (BusBookingApp)...");
+            com.btbs.ui.BusBookingApp.main(args);
+        }
     }
 
     private static void displayRoutes() {

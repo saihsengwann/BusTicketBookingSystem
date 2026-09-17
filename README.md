@@ -99,11 +99,16 @@ BusTicketBookingSystem2025_26/
 ├── lib/
 │   └── mysql-connector-j-9.6.0.jar     # MySQL JDBC Driver
 └── src/
-    ├── module-info.java                # Java 9+ module descriptor (requires java.sql)
+    ├── module-info.java                # Java 9+ module descriptor
     └── com/
         └── btbs/
-            ├── Main.java               # Runnable console demo application
-            ├── model/                  # POJO model classes (generated & refined)
+            ├── Main.java               # Unified entry point & console verifier
+            ├── dao/                    # Data Access Objects (Enterprise Layer)
+            │   ├── BookingDAO.java     # Transactional seat booking & wallet debits
+            │   ├── ScheduleDAO.java    # Route & schedule queries
+            │   ├── SeatDAO.java        # Live seat availability checking
+            │   └── WalletDAO.java      # PIN verification & balance management
+            ├── model/                  # POJO model entities
             │   ├── Account.java
             │   ├── Admin.java
             │   ├── Booking.java
@@ -115,6 +120,8 @@ BusTicketBookingSystem2025_26/
             │   ├── Seat.java
             │   ├── Transaction.java
             │   └── Wallet.java
+            ├── ui/
+            │   └── BusBookingApp.java  # Interactive Swing Desktop GUI
             └── util/
                 └── DBConnection.java   # JDBC connection manager
 ```
@@ -153,18 +160,24 @@ private static final String PASSWORD = "your_password";
 1. Open **Eclipse IDE**.
 2. Go to **File** &rarr; **Import...** &rarr; **General** &rarr; **Existing Projects into Workspace**.
 3. Select this repository folder as the root directory and click **Finish**.
-4. Right-click on [`src/com/btbs/Main.java`](src/com/btbs/Main.java) &rarr; **Run As** &rarr; **Java Application**.
+4. **Desktop GUI Application**: Right-click [`src/com/btbs/ui/BusBookingApp.java`](src/com/btbs/ui/BusBookingApp.java) &rarr; **Run As** &rarr; **Java Application**.
+5. **Console Verifier Demo**: Right-click [`src/com/btbs/Main.java`](src/com/btbs/Main.java) &rarr; **Run As** &rarr; **Java Application**.
 
 ---
 
 ### 3. Running via Command Line
 
-#### Compile:
+#### Compile All Sources:
 ```powershell
 javac -d bin -cp "lib/mysql-connector-j-9.6.0.jar" (Get-ChildItem -Path src -Recurse -Filter *.java | Select-Object -ExpandProperty FullName)
 ```
 
-#### Run Demo:
+#### Launch Interactive Desktop GUI:
+```powershell
+java -cp "bin;lib/mysql-connector-j-9.6.0.jar" com.btbs.ui.BusBookingApp
+```
+
+#### Run Headless / CLI Verifier Demo:
 ```powershell
 java -cp "bin;lib/mysql-connector-j-9.6.0.jar" com.btbs.Main
 ```
